@@ -10,13 +10,20 @@
             font-family: 'Arial', sans-serif;
             background: linear-gradient(180deg, #0A2A3E 0%, #1B4B5A 100%);
             color: #E0F7FA;
+            padding: 0.5rem;
         }
         .card {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
-            padding: 16px;
-            margin: 8px;
+            padding: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+        .card > div {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .highlight {
             background: linear-gradient(180deg, #00BCD4, #008C9E);
@@ -24,237 +31,299 @@
             padding: 16px;
             margin: 8px;
         }
+        /* Asegúrate de que no haya padding o margin extra en el body o contenedor principal */
+        body {
+            padding: 0.5rem;
+        }
+        #informe {
+            padding: 0;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body class="p-8">
-    <div class="flex flex-col md:flex-row justify-between items-center mb-4">
-        <div class="flex items-center mb-4 md:mb-0">
-            <svg class="mr-4" width="50" height="50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <g>
-                  <path class="st3" d="M111.52,35.13c22.72-14.11,52.57-7.13,66.68,15.59c14.11,22.72,7.13,52.57-15.59,66.68      c0,0-5.48,4.4-17.24,5.1l-0.16,11.06c30.51-2.2,50.38-23.54,50.38-56.52c0-32.98-26.73-59.71-59.71-59.71      c0,0-37.82-0.29-51.65,34.4l8.3,3.25C92.53,54.97,101.49,41.71,111.52,35.13z" fill="#FFFFFF"/>
-                  <path class="st3" d="M15.06,65.54c0,0,42.61-36.45,99.31,3.13c56.5,51.07,11.28,112.78,11.28,112.78l-13.78-0.63     c0,0,49.6-55.87-5.95-104.64C53.49,33.69,4.41,88.73,4.41,88.73V18.93h56.9v9.39H14.75L15.06,65.54z" fill="#FFFFFF"/>
-                  <path class="st3" d="M23.88,157.73c1.78,1.67,2.67,3.91,2.67,6.74c0,2.81-0.89,5.05-2.67,6.72c-1.78,1.67-3.84,2.5-6.17,2.5     h-3.42v9.15h-7.3v-27.61h10.73C20.04,155.23,22.1,156.06,23.88,157.73z M18.21,166.06c0.44-0.43,0.66-0.96,0.66-1.59     c0-0.63-0.22-1.16-0.66-1.6c-0.44-0.44-0.97-0.66-1.6-0.66h-2.33v4.5h2.33C17.24,166.71,17.78,166.49,18.21,166.06z" fill="#FFFFFF"/>
-                  <path class="st3" d="M36.7,175.85h9.24v6.98H29.39v-27.61h7.3V175.85z" fill="#FFFFFF"/>
-                  <path class="st3" d="M73.22,182.83h-7.49l-1.92-5.14h-8.34l-1.92,5.14h-7.47l10.12-27.61h6.89L73.22,182.83z M57.7,171.58h3.92     l-1.98-6.83L57.7,171.58z" fill="#FFFFFF"/>
-                  <path class="st3" d="M93.47,170.34v-15.11h7.34v27.61h-6.64L82.2,167.72v15.11h-7.34v-27.61h6.64L93.47,170.34z" fill="#FFFFFF"/>
-                </g>
-              </svg>
-            <h1 class="text-3xl font-bold">INFORME DE RESULTADOS</h1>
-        </div>
-        <div class="text-right">
-            <button id="downloadBtn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
-                <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
-                </svg>
-                <span>Descargar PDF</span>
-            </button>
-        </div>
-    </div>
-    
-    <div class="mb-4">
-        <p class="text-lg">
-            <span class="text-teal-400">Periodo:</span> 01 de agosto, 2023 | 31 de julio, 2024
-        </p>
-    </div>
-    
-    <div class="flex flex-col md:flex-row flex-wrap gap-4 mb-4">
-        <div class="highlight flex-1">
-            <p class="text-lg"><i class="fas fa-exchange-alt"></i> Volumen de Transacciones</p>
-            <p class="text-3xl font-bold">$1,250,101.60</p>
-        </div>
-        <div class="card flex-1">
-            <p class="text-lg"><i class="fas fa-chart-line"></i> Beneficios Totales</p>
-            <p class="text-3xl font-bold">$94,757.62</p>
-        </div>
-        <div class="card flex-1">
-            <p class="text-lg"><i class="fas fa-percentage"></i> % de Rentabilidad</p>
-            <p class="text-3xl font-bold">37.9%</p>
-        </div>
-    </div>
-    
-    <div class="flex flex-col md:flex-row gap-4 mb-4">
-        <div class="card flex-1">
-            <p class="text-lg font-bold">Criptomonedas más usadas</p>
-            <canvas id="criptomonedasChart"></canvas>
-        </div>
-        <div class="card flex-1">
-            <p class="text-lg font-bold">Distribución de Beneficios</p>
-            <canvas id="beneficiosChart"></canvas>
-        </div>
-    </div>
-    
-    <div class="card mb-4">
-        <h2 class="text-xl font-bold mb-4">Resumen de Resultados</h2>
-        <p>Durante el periodo del 01 de agosto de 2023 al 31 de julio de 2024, se ha registrado un volumen de transacciones de $1,250,101.60 USDT. Los beneficios totales alcanzaron $94,757.62 USDT, lo que representa una rentabilidad del 37.9% sobre la inversión inicial de $250,020.32 USDT.</p>
-        <p class="mt-2">Las criptomonedas más utilizadas en las operaciones fueron USDT, BTC, ETH, BNB y ADA. La distribución de beneficios muestra una tendencia positiva a lo largo de los trimestres, con un notable aumento en el último trimestre del periodo.</p>
-    </div>
-
-    <div class="flex flex-col md:flex-row gap-4 mb-4">
-        <div class="card flex-1">
-            <h3 class="text-lg font-bold mb-2">Desglose de Transacciones</h3>
-            <table class="w-full">
-                <thead>
-                    <tr>
-                        <th class="text-left">Tipo</th>
-                        <th class="text-right">Cantidad</th>
-                        <th class="text-right">Valor (USDT)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Compras</td>
-                        <td class="text-right">3,245</td>
-                        <td class="text-right">725,058.93</td>
-                    </tr>
-                    <tr>
-                        <td>Ventas</td>
-                        <td class="text-right">2,890</td>
-                        <td class="text-right">525,042.67</td>
-                    </tr>
-                    <tr>
-                        <td>Intercambios</td>
-                        <td class="text-right">1,123</td>
-                        <td class="text-right">150,000.00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="card flex-1">
-            <h3 class="text-lg font-bold mb-2">Rendimiento por Criptomoneda</h3>
-            <table class="w-full">
-                <thead>
-                    <tr>
-                        <th class="text-left">Criptomoneda</th>
-                        <th class="text-right">Rendimiento (%)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>BTC</td>
-                        <td class="text-right">42.5%</td>
-                    </tr>
-                    <tr>
-                        <td>ETH</td>
-                        <td class="text-right">35.2%</td>
-                    </tr>
-                    <tr>
-                        <td>BNB</td>
-                        <td class="text-right">28.7%</td>
-                    </tr>
-                    <tr>
-                        <td>ADA</td>
-                        <td class="text-right">22.1%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3 class="text-lg font-bold mb-2">Eventos Destacados</h3>
-        <ul class="list-disc pl-5">
-            <li>Lanzamiento exitoso de la estrategia de trading automático en octubre 2023, aumentando la eficiencia en un 15%.</li>
-            <li>Incorporación de 3 nuevas criptomonedas al portafolio en enero 2024, diversificando las oportunidades de inversión.</li>
-            <li>Implementación de un sistema de gestión de riesgos mejorado en marzo 2024, reduciendo las pérdidas potenciales en un 8%.</li>
-            <li>Alcance del hito de $1 millón en volumen de transacciones en junio 2024.</li>
-        </ul>
-    </div>
-
+    <div id="informe"></div>
     <script>
-        // Gráfico de criptomonedas más usadas
-        new Chart(document.getElementById('criptomonedasChart'), {
-            type: 'pie',
-            data: {
-                labels: ['USDT', 'BTC', 'ETH', 'BNB', 'ADA', 'Otras'],
-                datasets: [{
-                    data: [40, 25, 15, 10, 5, 5],
-                    backgroundColor: ['#00BCD4', '#008C9E', '#006064', '#00ACC1', '#0097A7', '#B2EBF2']
-                }]
-            },
-            options: {
+        const datosJSON = `{
+          "periodo": {
+            "inicio": "01 de agosto, 2023",
+            "fin": "31 de julio, 2024"
+          },
+          "volumenTransacciones": 1250101.60,
+          "beneficiosTotales": 94757.62,
+          "rentabilidad": 37.9,
+          "inversionInicial": 250020.32,
+          "criptomonedasUsadas": [
+            { "nombre": "USDT", "porcentaje": 40 },
+            { "nombre": "BTC", "porcentaje": 25 },
+            { "nombre": "ETH", "porcentaje": 15 },
+            { "nombre": "BNB", "porcentaje": 10 },
+            { "nombre": "ADA", "porcentaje": 5 },
+            { "nombre": "Otras", "porcentaje": 5 }
+          ],
+          "beneficiosTrimestres": [
+            { "trimestre": "Q1", "beneficio": 18951.52 },
+            { "trimestre": "Q2", "beneficio": 23689.40 },
+            { "trimestre": "Q3", "beneficio": 25585.56 },
+            { "trimestre": "Q4", "beneficio": 26531.14 }
+          ],
+          "desgloseTransacciones": [
+            { "tipo": "Compras", "cantidad": 3245, "valor": 725058.93 },
+            { "tipo": "Ventas", "cantidad": 2890, "valor": 525042.67 },
+            { "tipo": "Intercambios", "cantidad": 1123, "valor": 150000.00 }
+          ],
+          "rendimientoCriptomonedas": [
+            { "criptomoneda": "BTC", "rendimiento": 42.5 },
+            { "criptomoneda": "ETH", "rendimiento": 35.2 },
+            { "criptomoneda": "BNB", "rendimiento": 28.7 },
+            { "criptomoneda": "ADA", "rendimiento": 22.1 }
+          ],
+          "eventosDestacados": [
+            "Lanzamiento exitoso de la estrategia de trading automático en octubre 2023, aumentando la eficiencia en un 15%.",
+            "Incorporación de 3 nuevas criptomonedas al portafolio en enero 2024, diversificando las oportunidades de inversión.",
+            "Implementación de un sistema de gestión de riesgos mejorado en marzo 2024, reduciendo las pérdidas potenciales en un 8%.",
+            "Alcance del hito de $1 millón en volumen de transacciones en junio 2024."
+          ]
+        }`;
+
+        // Parseamos el JSON a un objeto JavaScript
+        const datosInforme = JSON.parse(datosJSON);
+
+        // Función para generar el contenido del informe
+        function generarInforme(datos) {
+            const informe = document.getElementById('informe');
+            informe.innerHTML = `
+                <div class="flex flex-col md:flex-row justify-between items-center mb-4">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <svg class="mr-4" width="50" height="50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                              <path class="st3" d="M111.52,35.13c22.72-14.11,52.57-7.13,66.68,15.59c14.11,22.72,7.13,52.57-15.59,66.68      c0,0-5.48,4.4-17.24,5.1l-0.16,11.06c30.51-2.2,50.38-23.54,50.38-56.52c0-32.98-26.73-59.71-59.71-59.71      c0,0-37.82-0.29-51.65,34.4l8.3,3.25C92.53,54.97,101.49,41.71,111.52,35.13z" fill="#FFFFFF"/>
+                              <path class="st3" d="M15.06,65.54c0,0,42.61-36.45,99.31,3.13c56.5,51.07,11.28,112.78,11.28,112.78l-13.78-0.63     c0,0,49.6-55.87-5.95-104.64C53.49,33.69,4.41,88.73,4.41,88.73V18.93h56.9v9.39H14.75L15.06,65.54z" fill="#FFFFFF"/>
+                              <path class="st3" d="M23.88,157.73c1.78,1.67,2.67,3.91,2.67,6.74c0,2.81-0.89,5.05-2.67,6.72c-1.78,1.67-3.84,2.5-6.17,2.5     h-3.42v9.15h-7.3v-27.61h10.73C20.04,155.23,22.1,156.06,23.88,157.73z M18.21,166.06c0.44-0.43,0.66-0.96,0.66-1.59     c0-0.63-0.22-1.16-0.66-1.6c-0.44-0.44-0.97-0.66-1.6-0.66h-2.33v4.5h2.33C17.24,166.71,17.78,166.49,18.21,166.06z" fill="#FFFFFF"/>
+                              <path class="st3" d="M36.7,175.85h9.24v6.98H29.39v-27.61h7.3V175.85z" fill="#FFFFFF"/>
+                              <path class="st3" d="M73.22,182.83h-7.49l-1.92-5.14h-8.34l-1.92,5.14h-7.47l10.12-27.61h6.89L73.22,182.83z M57.7,171.58h3.92     l-1.98-6.83L57.7,171.58z" fill="#FFFFFF"/>
+                              <path class="st3" d="M93.47,170.34v-15.11h7.34v27.61h-6.64L82.2,167.72v15.11h-7.34v-27.61h6.64L93.47,170.34z" fill="#FFFFFF"/>
+                            </g>
+                          </svg>
+                        <h1 class="text-3xl font-bold">INFORME DE RESULTADOS</h1>
+                    </div>
+                    <div class="text-right">
+                        <button id="downloadBtn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
+                            </svg>
+                            <span>Descargar PDF</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="text-lg">
+                        <span class="text-teal-400">Periodo:</span> ${datos.periodo.inicio} | ${datos.periodo.fin}
+                    </p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row flex-wrap gap-4 mb-4">
+                    <div class="highlight flex-1">
+                        <p class="text-lg"><i class="fas fa-exchange-alt"></i> Volumen de Transacciones</p>
+                        <p class="text-3xl font-bold">${datos.volumenTransacciones.toFixed(2)}</p>
+                    </div>
+                    <div class="card flex-1">
+                        <p class="text-lg"><i class="fas fa-chart-line"></i> Beneficios Totales</p>
+                        <p class="text-3xl font-bold">${datos.beneficiosTotales.toFixed(2)}</p>
+                    </div>
+                    <div class="card flex-1">
+                        <p class="text-lg"><i class="fas fa-percentage"></i> % de Rentabilidad</p>
+                        <p class="text-3xl font-bold">${datos.rentabilidad.toFixed(2)}%</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-row gap-2 mb-2">
+                    <div class="card flex-1" style="width: 50%;">
+                        <p class="text-xs font-bold mb-1">Criptomonedas más usadas</p>
+                        <div style="height: 150px; width: 100%;">
+                            <canvas id="criptomonedasChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card flex-1" style="width: 50%;">
+                        <p class="text-xs font-bold mb-1">Distribución de Beneficios</p>
+                        <div style="height: 150px; width: 100%;">
+                            <canvas id="beneficiosChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <p class="text-sm font-bold mb-1">Resumen de Resultados</p>
+                    <p class="text-xs">Durante el periodo del ${datos.periodo.inicio} al ${datos.periodo.fin}, se ha registrado un volumen de transacciones de ${datos.volumenTransacciones.toFixed(2)} USDT. Los beneficios totales alcanzaron ${datos.beneficiosTotales.toFixed(2)} USDT, lo que representa una rentabilidad del ${datos.rentabilidad.toFixed(2)}% sobre la inversión inicial de ${datos.inversionInicial.toFixed(2)} USDT.</p>
+                    <p class="text-xs">Las criptomonedas más utilizadas en las operaciones fueron ${datos.criptomonedasUsadas.map(cripto => cripto.nombre).join(', ')}. La distribución de beneficios muestra una tendencia positiva a lo largo de los trimestres, con un notable aumento en el último trimestre del periodo.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-4 mb-4">
+                    <div class="card flex-1">
+                        <h3 class="text-lg font-bold mb-2">Desglose de Transacciones</h3>
+                        <table class="w-full">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Tipo</th>
+                                    <th class="text-right">Cantidad</th>
+                                    <th class="text-right">Valor (USDT)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${datos.desgloseTransacciones.map(transaccion => `
+                                    <tr>
+                                        <td>${transaccion.tipo}</td>
+                                        <td class="text-right">${transaccion.cantidad}</td>
+                                        <td class="text-right">${transaccion.valor.toFixed(2)}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card flex-1">
+                        <h3 class="text-lg font-bold mb-2">Rendimiento por Criptomoneda</h3>
+                        <table class="w-full">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Criptomoneda</th>
+                                    <th class="text-right">Rendimiento (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${datos.rendimientoCriptomonedas.map(cripto => `
+                                    <tr>
+                                        <td>${cripto.criptomoneda}</td>
+                                        <td class="text-right">${cripto.rendimiento.toFixed(2)}%</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-lg font-bold mb-2">Eventos Destacados</h3>
+                    <ul class="list-disc pl-5">
+                        ${datos.eventosDestacados.map(evento => `
+                            <li>${evento}</li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+
+            // Generar gráficos
+            generarGraficos(datos);
+
+            // Configurar el botón de descarga
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                var opt = {
+                    margin: 1,
+                    filename: 'informe_de_resultados.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(document.body).save();
+            });
+        }
+
+        // Función para generar los gráficos
+        function generarGraficos(datos) {
+            const opcionesComunes = {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        position: 'top',
+                        position: 'right',
                         labels: {
-                            color: '#E0F7FA'
+                            boxWidth: 8,
+                            padding: 3,
+                            color: '#FFFFFF',
+                            font: {
+                                size: 7
+                            }
                         }
                     },
                     title: {
-                        display: true,
-                        text: 'Criptomonedas más usadas',
-                        color: '#E0F7FA'
+                        display: false
                     }
                 }
-            }
-        });
-
-        // Gráfico de distribución de beneficios
-        new Chart(document.getElementById('beneficiosChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                datasets: [{
-                    label: 'Beneficios',
-                    data: [18951.52, 23689.40, 25585.56, 26531.14],
-                    backgroundColor: '#00BCD4'
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: {
-                            color: '#E0F7FA'
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: 'Distribución de Beneficios por Trimestre',
-                        color: '#E0F7FA'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            color: '#E0F7FA'
-                        },
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: '#E0F7FA'
-                        },
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        }
-                    }
-                }
-            }
-        });
-
-        document.getElementById('downloadBtn').addEventListener('click', function() {
-            // Opciones para la generación del PDF
-            var opt = {
-                margin:       1,
-                filename:     'informe_de_resultados.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
 
-            // Elemento que queremos convertir a PDF
-            var element = document.body;
+            // Gráfico de criptomonedas más usadas
+            new Chart(document.getElementById('criptomonedasChart'), {
+                type: 'pie',
+                data: {
+                    labels: datos.criptomonedasUsadas.map(c => c.nombre),
+                    datasets: [{
+                        data: datos.criptomonedasUsadas.map(c => c.porcentaje),
+                        backgroundColor: ['#00BCD4', '#008C9E', '#006064', '#00ACC1', '#0097A7', '#B2EBF2']
+                    }]
+                },
+                options: {
+                    ...opcionesComunes,
+                    plugins: {
+                        ...opcionesComunes.plugins,
+                        legend: {
+                            ...opcionesComunes.plugins.legend,
+                            position: 'right'
+                        }
+                    }
+                }
+            });
 
-            // Generar el PDF
-            html2pdf().set(opt).from(element).save();
-        });
+            // Gráfico de distribución de beneficios
+            new Chart(document.getElementById('beneficiosChart'), {
+                type: 'bar',
+                data: {
+                    labels: datos.beneficiosTrimestres.map(b => b.trimestre),
+                    datasets: [{
+                        label: 'Beneficios',
+                        data: datos.beneficiosTrimestres.map(b => b.beneficio),
+                        backgroundColor: '#00BCD4'
+                    }]
+                },
+                options: {
+                    ...opcionesComunes,
+                    plugins: {
+                        ...opcionesComunes.plugins,
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#FFFFFF',
+                                font: {
+                                    size: 7
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#FFFFFF',
+                                font: {
+                                    size: 7
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Generar el informe inmediatamente con los datos parseados del JSON
+        generarInforme(datosInforme);
     </script>
 </body>
 </html>
