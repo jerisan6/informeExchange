@@ -1,0 +1,41 @@
+{
+  "periodo": {
+    "inicio": "01 de agosto, 2023",
+    "fin": "31 de julio, 2024"
+  },
+  "volumenTransacciones": 1250101.60,
+  "beneficiosTotales": 94757.62,
+  "rentabilidad": 37.9,
+  "inversionInicial": 250020.32,
+  "criptomonedasUsadas": [
+    { "nombre": "USDT", "porcentaje": 40 },
+    { "nombre": "BTC", "porcentaje": 25 },
+    { "nombre": "ETH", "porcentaje": 15 },
+    { "nombre": "BNB", "porcentaje": 10 },
+    { "nombre": "ADA", "porcentaje": 5 },
+    { "nombre": "Otras", "porcentaje": 5 }
+  ],
+  "beneficiosTrimestres": [
+    { "trimestre": "Q1", "beneficio": 18951.52 },
+    { "trimestre": "Q2", "beneficio": 23689.40 },
+    { "trimestre": "Q3", "beneficio": 25585.56 },
+    { "trimestre": "Q4", "beneficio": 26531.14 }
+  ],
+  "desgloseTransacciones": [
+    { "tipo": "Compras", "cantidad": 3245, "valor": 725058.93 },
+    { "tipo": "Ventas", "cantidad": 2890, "valor": 525042.67 },
+    { "tipo": "Intercambios", "cantidad": 1123, "valor": 150000.00 }
+  ],
+  "rendimientoCriptomonedas": [
+    { "criptomoneda": "BTC", "rendimiento": 42.5 },
+    { "criptomoneda": "ETH", "rendimiento": 35.2 },
+    { "criptomoneda": "BNB", "rendimiento": 28.7 },
+    { "criptomoneda": "ADA", "rendimiento": 22.1 }
+  ],
+  "eventosDestacados": [
+    "Lanzamiento exitoso de la estrategia de trading automático en octubre 2023, aumentando la eficiencia en un 15%.",
+    "Incorporación de 3 nuevas criptomonedas al portafolio en enero 2024, diversificando las oportunidades de inversión.",
+    "Implementación de un sistema de gestión de riesgos mejorado en marzo 2024, reduciendo las pérdidas potenciales en un 8%.",
+    "Alcance del hito de $1 millón en volumen de transacciones en junio 2024."
+  ]
+}
