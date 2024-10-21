@@ -10,14 +10,14 @@
             font-family: 'Arial', sans-serif;
             background: linear-gradient(180deg, #0A2A3E 0%, #1B4B5A 100%);
             color: #E0F7FA;
-            padding: 0.5rem;
+            padding: 1rem;
         }
         .card {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
-            padding: 0.25rem;
-            margin-bottom: 0.25rem;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
         }
         .card > div {
             flex-grow: 1;
@@ -30,13 +30,6 @@
             border-radius: 8px;
             padding: 16px;
             margin: 8px;
-        }
-        /* Asegúrate de que no haya padding o margin extra en el body o contenedor principal */
-        body {
-            padding: 0.5rem;
-        }
-        #informe {
-            padding: 0;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -154,10 +147,14 @@
                     </div>
                 </div>
                 
-                <div class="card">
-                    <p class="text-sm font-bold mb-1">Resumen de Resultados</p>
-                    <p class="text-xs">Durante el periodo del ${datos.periodo.inicio} al ${datos.periodo.fin}, se ha registrado un volumen de transacciones de ${datos.volumenTransacciones.toFixed(2)} USDT. Los beneficios totales alcanzaron ${datos.beneficiosTotales.toFixed(2)} USDT, lo que representa una rentabilidad del ${datos.rentabilidad.toFixed(2)}% sobre la inversión inicial de ${datos.inversionInicial.toFixed(2)} USDT.</p>
-                    <p class="text-xs">Las criptomonedas más utilizadas en las operaciones fueron ${datos.criptomonedasUsadas.map(cripto => cripto.nombre).join(', ')}. La distribución de beneficios muestra una tendencia positiva a lo largo de los trimestres, con un notable aumento en el último trimestre del periodo.</p>
+                <div class="card mb-4">
+                    <h3 class="text-lg font-bold mb-2">Resumen de Resultados</h3>
+                    <p class="text-sm">
+                        Durante el periodo del ${datos.periodo.inicio} al ${datos.periodo.fin}, se ha registrado un volumen de transacciones de ${datos.volumenTransacciones.toFixed(2)} USDT. Los beneficios totales alcanzaron ${datos.beneficiosTotales.toFixed(2)} USDT, lo que representa una rentabilidad del ${datos.rentabilidad.toFixed(2)}% sobre la inversión inicial de ${datos.inversionInicial.toFixed(2)} USDT.
+                    </p>
+                    <p class="text-sm mt-2">
+                        Las criptomonedas más utilizadas en las operaciones fueron ${datos.criptomonedasUsadas.map(cripto => cripto.nombre).join(', ')}. La distribución de beneficios muestra una tendencia positiva a lo largo de los trimestres, con un notable aumento en el último trimestre del periodo.
+                    </p>
                 </div>
                 
                 <div class="flex flex-col md:flex-row gap-4 mb-4">
@@ -205,7 +202,7 @@
 
                 <div class="card">
                     <h3 class="text-lg font-bold mb-2">Eventos Destacados</h3>
-                    <ul class="list-disc pl-5">
+                    <ul class="list-disc pl-5 text-sm">
                         ${datos.eventosDestacados.map(evento => `
                             <li>${evento}</li>
                         `).join('')}
